@@ -1,24 +1,27 @@
 import React from "react";
+import { useState } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import Button from "./button.jsx"
 
 //create your first component
 const Home = () => {
+	// all operations & variables here
+
+	let [counter, setCounter] = useState(0);
+
+	const increase = () => {
+		setCounter(counter+1); // counter++ is slower
+	}
+
+	const decrease = () => {
+		setCounter(--counter);
+	}
+
 	return (
 		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+			<Button title='Increase' click={increase} />
+			<h1>{counter}</h1>
+			<Button title='Decrease' click={decrease} />
 		</div>
 	);
 };
